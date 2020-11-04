@@ -212,14 +212,14 @@ create table `resource` (
 ) engine=innodb default charset=utf8mb4 comment='资源';
 
 insert into `resource` values ('01', '系统管理', null, null, null);
-insert into `resource` values ('0101', '用户管理', '/system/user', null, '01');
-insert into `resource` values ('010101', '保存', null, '["/system/admin/user/list", "/system/admin/user/save"]', '0101');
-insert into `resource` values ('010102', '删除', null, '["/system/admin/user/delete"]', '0101');
-insert into `resource` values ('010103', '重置密码', null, '["/system/admin/user/save-password"]', '0101');
-insert into `resource` values ('0102', '资源管理', '/system/resource', null, '01');
-insert into `resource` values ('010201', '保存/显示', null, '["/system/admin/resource"]', '0102');
-insert into `resource` values ('0103', '角色管理', '/system/role', null, '01');
-insert into `resource` values ('010301', '角色/权限管理', null, '["/system/admin/role"]', '0103');
+insert into `resource` values ('0101', '用户管理', '/gateway/user', null, '01');
+insert into `resource` values ('010101', '保存', null, '["/gateway/admin/user/list", "/gateway/admin/user/save"]', '0101');
+insert into `resource` values ('010102', '删除', null, '["/gateway/admin/user/delete"]', '0101');
+insert into `resource` values ('010103', '重置密码', null, '["/gateway/admin/user/save-password"]', '0101');
+insert into `resource` values ('0102', '资源管理', '/gateway/resource', null, '01');
+insert into `resource` values ('010201', '保存/显示', null, '["/gateway/admin/resource"]', '0102');
+insert into `resource` values ('0103', '角色管理', '/gateway/role', null, '01');
+insert into `resource` values ('010301', '角色/权限管理', null, '["/gateway/admin/role"]', '0103');
 
 drop table if exists `role`;
 create table `role` (

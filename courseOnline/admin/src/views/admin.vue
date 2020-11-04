@@ -369,8 +369,8 @@
             <b class="arrow"></b>
 
             <ul class="submenu">
-              <li v-show="hasResource('0101')" class="" id="system-user-sidebar">
-                <router-link to="/system/user">
+              <li v-show="hasResource('0101')" class="" id="gateway-user-sidebar">
+                <router-link to="/gateway/user">
                   <i class="menu-icon fa fa-caret-right"></i>
                   用户管理
                 </router-link>
@@ -378,8 +378,8 @@
                 <b class="arrow"></b>
               </li>
 
-              <li v-show="hasResource('0102')" class="" id="system-resource-sidebar">
-                <router-link to="/system/resource">
+              <li v-show="hasResource('0102')" class="" id="gateway-resource-sidebar">
+                <router-link to="/gateway/resource">
                   <i class="menu-icon fa fa-caret-right"></i>
                   资源管理
                 </router-link>
@@ -387,8 +387,8 @@
                 <b class="arrow"></b>
               </li>
 
-              <li v-show="hasResource('0103')" class="" id="system-role-sidebar">
-                <router-link to="/system/role">
+              <li v-show="hasResource('0103')" class="" id="gateway-role-sidebar">
+                <router-link to="/gateway/role">
                   <i class="menu-icon fa fa-caret-right"></i>
                   角色管理
                 </router-link>
@@ -624,7 +624,7 @@
       logout () {
         let _this = this;
         Loading.show();
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/user/logout/' + _this.loginUser.token).then((response)=>{
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/gateway/admin/user/logout/' + _this.loginUser.token).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {

@@ -165,7 +165,7 @@
   import Pagination from "../../components/pagination";
   export default {
     components: {Pagination},
-    name: "system-role",
+    name: "gateway-role",
     data: function() {
       return {
         role: {},
@@ -181,7 +181,7 @@
       _this.$refs.pagination.size = 5;
       _this.list(1);
       // sidebar激活样式方法一
-      // this.$parent.activeSidebar("system-role-sidebar");
+      // this.$parent.activeSidebar("gateway-role-sidebar");
 
     },
     methods: {
@@ -209,7 +209,7 @@
       list(page) {
         let _this = this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/role/list', {
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/role/list', {
           page: page,
           size: _this.$refs.pagination.size,
         }).then((response)=>{
@@ -238,7 +238,7 @@
         }
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/role/save', _this.role).then((response)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/role/save', _this.role).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {
@@ -258,7 +258,7 @@
         let _this = this;
         Confirm.show("删除角色后不可恢复，确认删除？", function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/system/admin/role/delete/' + id).then((response)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/gateway/admin/role/delete/' + id).then((response)=>{
             Loading.hide();
             let resp = response.data;
             if (resp.success) {
@@ -285,7 +285,7 @@
       loadResource() {
         let _this = this;
         Loading.show();
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/resource/load-tree').then((res)=>{
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/gateway/admin/resource/load-tree').then((res)=>{
           Loading.hide();
           let response = res.data;
           _this.resources = response.content;
@@ -332,7 +332,7 @@
           resourceIds.push(resources[i].id);
         }
 
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/role/save-resource', {
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/role/save-resource', {
           id: _this.role.id,
           resourceIds: resourceIds
         }).then((response)=>{
@@ -350,7 +350,7 @@
        */
       listRoleResource() {
         let _this = this;
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/role/list-resource/' + _this.role.id).then((response)=>{
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/gateway/admin/role/list-resource/' + _this.role.id).then((response)=>{
           let resp = response.data;
           let resources = resp.content;
 
@@ -378,7 +378,7 @@
        */
       listUser() {
         let _this = this;
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/list', {
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/user/list', {
           page: 1,
           size: 9999
         }).then((response)=>{
@@ -429,7 +429,7 @@
         for (let i = 0; i < users.length; i++) {
           userIds.push(users[i].id);
         }
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/role/save-user', {
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/role/save-user', {
           id: _this.role.id,
           userIds: userIds
         }).then((response)=>{
@@ -449,7 +449,7 @@
       listRoleUser() {
         let _this = this;
         _this.roleUsers = [];
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/role/list-user/' + _this.role.id).then((res)=>{
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/gateway/admin/role/list-user/' + _this.role.id).then((res)=>{
           let response = res.data;
           let userIds = response.content;
 

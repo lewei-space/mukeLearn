@@ -126,7 +126,7 @@
         _this.user.imageCodeToken = _this.imageCodeToken;
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/login', _this.user).then((response)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/user/login', _this.user).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {
@@ -165,7 +165,7 @@
       loadImageCode: function () {
         let _this = this;
         _this.imageCodeToken = Tool.uuid(8);
-        $('#image-code').attr('src', process.env.VUE_APP_SERVER + '/system/admin/kaptcha/image-code/' + _this.imageCodeToken);
+        $('#image-code').attr('src', process.env.VUE_APP_SERVER + '/gateway/admin/kaptcha/image-code/' + _this.imageCodeToken);
       },
     }
   }

@@ -122,7 +122,7 @@
   import Pagination from "../../components/pagination";
   export default {
     components: {Pagination},
-    name: "system-user",
+    name: "gateway-user",
     data: function() {
       return {
         user: {},
@@ -134,7 +134,7 @@
       _this.$refs.pagination.size = 5;
       _this.list(1);
       // sidebar激活样式方法一
-      // this.$parent.activeSidebar("system-user-sidebar");
+      // this.$parent.activeSidebar("gateway-user-sidebar");
 
     },
     methods: {
@@ -170,7 +170,7 @@
       list(page) {
         let _this = this;
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/list', {
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/user/list', {
           page: page,
           size: _this.$refs.pagination.size,
         }).then((response)=>{
@@ -200,7 +200,7 @@
 
         _this.user.password = hex_md5(_this.user.password + KEY);
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/save', _this.user).then((response)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/user/save', _this.user).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {
@@ -220,7 +220,7 @@
         let _this = this;
         Confirm.show("删除用户表后不可恢复，确认删除？", function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/system/admin/user/delete/' + id).then((response)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/gateway/admin/user/delete/' + id).then((response)=>{
             Loading.hide();
             let resp = response.data;
             if (resp.success) {
@@ -249,7 +249,7 @@
 
         _this.user.password = hex_md5(_this.user.password + KEY);
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/user/save-password', _this.user).then((response)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/user/save-password', _this.user).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {

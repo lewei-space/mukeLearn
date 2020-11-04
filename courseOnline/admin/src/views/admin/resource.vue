@@ -26,7 +26,7 @@
 
 <script>
   export default {
-    name: "system-resource",
+    name: "gateway-resource",
     data: function() {
       return {
         resource: {},
@@ -39,7 +39,7 @@
       let _this = this;
       _this.list();
       // sidebar激活样式方法一
-      // this.$parent.activeSidebar("system-resource-sidebar");
+      // this.$parent.activeSidebar("gateway-resource-sidebar");
 
     },
     methods: {
@@ -49,7 +49,7 @@
       list() {
         let _this = this;
         Loading.show();
-        _this.$ajax.get(process.env.VUE_APP_SERVER + '/system/admin/resource/load-tree').then((res)=>{
+        _this.$ajax.get(process.env.VUE_APP_SERVER + '/gateway/admin/resource/load-tree').then((res)=>{
           Loading.hide();
           let response = res.data;
           _this.resources = response.content;
@@ -72,7 +72,7 @@
         let json = JSON.parse(_this.resourceStr);
 
         Loading.show();
-        _this.$ajax.post(process.env.VUE_APP_SERVER + '/system/admin/resource/save', json).then((response)=>{
+        _this.$ajax.post(process.env.VUE_APP_SERVER + '/gateway/admin/resource/save', json).then((response)=>{
           Loading.hide();
           let resp = response.data;
           if (resp.success) {
@@ -92,7 +92,7 @@
         let _this = this;
         Confirm.show("删除资源后不可恢复，确认删除？", function () {
           Loading.show();
-          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/system/admin/resource/delete/' + id).then((response)=>{
+          _this.$ajax.delete(process.env.VUE_APP_SERVER + '/gateway/admin/resource/delete/' + id).then((response)=>{
             Loading.hide();
             let resp = response.data;
             if (resp.success) {

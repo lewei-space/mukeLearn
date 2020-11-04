@@ -5,11 +5,13 @@
 	<packaging>pom</packaging>
 	<modules>
 		<module>eureka</module>
-	</modules>
+        <module>system</module>
+        <module>gateway</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.10.RELEASE</version>
+		<version>2.2.2.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example.lele</groupId>
@@ -23,25 +25,6 @@
 		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
 	</properties>
 
-	<dependencies>
-<!--		<dependency>-->
-<!--			<groupId>org.springframework.cloud</groupId>-->
-<!--			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>-->
-<!--		</dependency>-->
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>org.junit.vintage</groupId>
-					<artifactId>junit-vintage-engine</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-	</dependencies>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -51,6 +34,17 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<!-- 集成mybatis -->
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>1.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.47</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -59,6 +53,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.2.2.RELEASE</version>
 			</plugin>
 		</plugins>
 	</build>
